@@ -89,8 +89,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'neondb',
         'USER': 'neondb_owner',
-        'PASSWORD': 'npg_LomzyTd4Hr5B',
-        'HOST': 'ep-jolly-bush-a7khrooy-pooler.ap-southeast-2.aws.neon.tech',
+        'PASSWORD': 'npg_xQotC5OL6TIF',
+        'HOST': 'ep-red-scene-a7jisftp-pooler.ap-southeast-2.aws.neon.tech',
         'PORT': '5432',
     }
 }
