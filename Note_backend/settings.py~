@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'todolist'
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'NAME': 'neondb',
         'USER': 'neondb_owner',
         'PASSWORD': 'npg_xQotC5OL6TIF',
-        'HOST': 'ep-jolly-bush-a7khrooy-pooler.ap-southeast-2.aws.neon.tech',
+        'HOST': 'ep-red-scene-a7jisftp-pooler.ap-southeast-2.aws.neon.tech',
         'PORT': '5432',
     }
 }
