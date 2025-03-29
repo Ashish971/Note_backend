@@ -27,7 +27,7 @@ class LoginView(ObtainAuthToken):
         return Response({'token': token.key, 'user_id': token.user_id})
 
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = (IsAuthenticated)
 
     def post(self, request):
         request.user.auth_token.delete()
