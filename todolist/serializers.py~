@@ -24,4 +24,4 @@ class TodoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Todo
         fields = ['id', 'user', 'title', 'description', 'completed', 'created_at']
-        extra_kwargs = {'user': {'read_only': True}}  # Automatically associate todos with the logged-in user
+        extra_kwargs = {'user': {'read_only': False}}  # Automatically associate todos with the logged-in user
