@@ -16,7 +16,7 @@ from rest_framework.permissions import IsAuthenticated
 from todolist.serializers import UserSerializer
 
 class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
+    queryset = User.objecfts.all()
     permission_classes = (AllowAny,)
     serializer_class = UserSerializer
 
@@ -27,7 +27,7 @@ class LoginView(ObtainAuthToken):
         return Response({'token': token.key, 'user_id': token.user_id})
 
 class LogoutView(APIView):
-    permission_classes = (IsAuthenticated)
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         request.user.auth_token.delete()
