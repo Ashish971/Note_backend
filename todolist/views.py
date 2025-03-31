@@ -1,10 +1,8 @@
-
-
 # Create your views here.
 from django.shortcuts import render
 
 # Create your views here.
-from rest_framework import generics
+from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -14,6 +12,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
 from todolist.serializers import UserSerializer
+from .models import Todo
+from .serializers import TodoSerializer
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -33,4 +33,12 @@ class LogoutView(APIView):
         request.user.auth_token.delete()
         return Response(status=200)
 
+
+class TodoCreateView(generics.CreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+    permission_classes = [permissions.IsAuthenticated]  # Ensure user is logged in
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)  # Automatically associate the to-do with the logged-in user
 
