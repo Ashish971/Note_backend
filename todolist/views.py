@@ -42,3 +42,29 @@ class TodoCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)  # Automatically associate the to-do with the logged-in user
 
+
+# List Todo View
+class TodoListView(generics.ListAPIView):
+    serializer_class = TodoSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user)
+
+
+# Update Todo View
+class TodoUpdateView(generics.UpdateAPIView):
+    serializer_class = TodoSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user)
+
+
+# # Delete Todo View
+# class TodoDeleteView(generics.DestroyAPIView):
+#     serializer_class = TodoSerializer
+#     permission_classes = [IsAuthenticated]
+#
+#     def get_queryset(self):
+#         return Todo.objects.filter(user=self.request.user)
