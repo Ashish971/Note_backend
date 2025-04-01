@@ -1,7 +1,6 @@
 from django.urls import path
 from todolist.views import RegisterView, LogoutView, TodoUpdateView
-from todolist.views import LoginView , TodoCreateView , TodoListViewgit fetch origin
-git checkout 9-as-a-user-i-want-to-change-the-todolist---backend
+from todolist.views import LoginView , TodoCreateView , TodoListView
 
 urlpatterns =[
     path('register/', RegisterView.as_view(), name='register'),

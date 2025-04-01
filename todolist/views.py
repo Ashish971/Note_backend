@@ -61,10 +61,10 @@ class TodoUpdateView(generics.UpdateAPIView):
         return Todo.objects.filter(user=self.request.user)
 
 
-# # Delete Todo View
-# class TodoDeleteView(generics.DestroyAPIView):
-#     serializer_class = TodoSerializer
-#     permission_classes = [IsAuthenticated]
-#
-#     def get_queryset(self):
-#         return Todo.objects.filter(user=self.request.user)
+# Delete Todo View
+class TodoDeleteView(generics.DestroyAPIView):
+    serializer_class = TodoSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user)
