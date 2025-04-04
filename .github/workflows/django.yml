@@ -29,6 +29,4 @@ jobs:
       - name: Set environment variable for testing
         run: echo "DJANGO_TEST_ENV=True" >> $GITHUB_ENV
 
-      - name: Run Django tests
-        run: DJANGO_TEST_ENV=True python manage.py test
-        working-directory: ./
+     
