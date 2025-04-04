@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,8 +96,28 @@ DATABASES = {
         'PASSWORD': 'npg_xQotC5OL6TIF',
         'HOST': 'ep-red-scene-a7jisftp-pooler.ap-southeast-2.aws.neon.tech',
         'PORT': '5432',
+# "TEST": {
+#             "NAME": "test_neondb_temp",  # Use a different test database
+#         },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'testdatabase',
+#         'USER': 'ashish17',
+#         'PASSWORD': '@sd123QWERT',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+if os.getenv('DJANGO_TEST_ENV'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -131,7 +153,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = 'static/'
 
 # Default primary key field type

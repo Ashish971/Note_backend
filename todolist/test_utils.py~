@@ -1,0 +1,7 @@
+# test_utils.py
+from django.db import connections
+
+def teardown_database():
+    # Clean up any test data here
+    MyModel.objects.all().delete()
+    connections['default'].close()

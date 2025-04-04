@@ -1,4 +1,5 @@
 from django.urls import path
+from . import views
 from todolist.views import RegisterView, LogoutView, TodoUpdateView
 from todolist.views import LoginView , TodoCreateView , TodoListView, TodoDeleteView
 
