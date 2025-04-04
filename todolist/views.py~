@@ -42,15 +42,14 @@ class TodoCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    # def get(self, request, *args, **kwargs):
-    #     todos = Todo.objects.filter(user=self.request.user)
-    #     serializer = TodoSerializer(todos, many=True)
-    #     return Response(serializer.data) #Automatically associate the to-do with the logged-in user
+    def get(self, request, *args, **kwargs):
+        todos = Todo.objects.filter(user=self.request.user)
+        serializer = TodoSerializer(todos, many=True)
+        return Response(serializer.data) #Automatically associate the to-do with the logged-in user
 
 
 # List Todo View
 class TodoListView(generics.ListAPIView):
-    queryset = Todo.objects.all()
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated]
 

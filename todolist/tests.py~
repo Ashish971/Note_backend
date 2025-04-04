@@ -4,6 +4,15 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from .models import Todo
 
+import os
+#
+# if os.getenv('DJANGO_TEST_ENV'):
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
 
 class TodoViewManualTest(APITestCase):
     def setUp(self):
@@ -105,6 +114,7 @@ class TodoDeleteTest(APITestCase):
         self.user = User.objects.create_user(username='testuser', password='test123')
         self.token = Token.objects.create(user=self.user)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
+
         # Create a todo to delete
         self.todo = Todo.objects.create(
             user=self.user,
